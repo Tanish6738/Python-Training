@@ -1,0 +1,32 @@
+Python Docs on Python.org documentations.
+
+difference btw the 32 and 64 bits
+
+why the python come ?
+
+what is variable .
+
+Why hertz not meter per second ? 
+
+memory in 2d is like and excel sheet.
+    
+    Address ,value and variable
+
+    like linkedList.
+
+We Store the data in the Cell and the reference in the variable
+
+
+PEP 8 is the Python guide for the Style  =  https://pep8.org/
+
+
+NameSpace - is a dictionary where the All the Data types are mapped in the Python
+
+Operators Arithmetic , Logical , Assignmenet , Bitwise = (PIPE, AMPERCENT, TILDE , CRAT)
+
+
+DATA TYPE - list , tuple , string , (Range - generator and iterators of list) . 
+
+colon significe the scope of if ,else, elif ,while for anything is started
+
+By default the syntax and format of string is single quote
