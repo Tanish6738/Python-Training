@@ -51,4 +51,36 @@ we have the continous memory allocation so we can use the loop on the sequential
     Range used as generator and iterators.
 
 
+JO bhi class ke ander honge wo methods
+
+Types : built in , User Defined , anynomus / Lamda , Higer Order
+
+    built in function are the functions which are defined inside the default module of the python itself and they are the native to the python and present inside in the 
+
+    https://docs.python.org/3/library/functions.html
+
+    import builtins
+
+    print(dir(builtins))
+
+
+    User Defined : Are the functions which are the defined by the users for their easy of work
+
+        parameters : default def func(a = 10)
+
+                    KeyWords func(a = 20 )
+                    Multivalue : def func(*a):
+                                    print(type(a)) # print : Tuple Because of reference passing
+                                            
+                                func(1,2,3,4)
+                    KeyWords Multivalue : 
+                                def func(**b):
+                                    print(type(b)) # print : dictionary Because of reference passing
+                                            
+                                func(1,2,3,4)
+
+        Lambda = var = Lambda <parameters> : Code Block
+
+        
+
 
