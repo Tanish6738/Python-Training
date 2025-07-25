@@ -83,4 +83,22 @@ Types : built in , User Defined , anynomus / Lamda , Higer Order
 
         
 
+OOPS 
+    - class
+    - Object
+    
 
+    - Abstraction
+    - Encapsulation
+    - PolyMorphism
+    - Inheritence
+    
+thier is not logic of Constructor
+Magic and  Dunder Methods in the Python
+
+here the in __init__(self) self reperesent the current instance of the Object
+
+obj = class1() here the obj is referenced as self
+
+
+Because of NameSpace We Cannot use the Method Overloading . Because the Same function is not assign in the same dictionary of NameSpace
