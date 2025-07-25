@@ -29,4 +29,26 @@ DATA TYPE - list , tuple , string , (Range - generator and iterators of list) .
 
 colon significe the scope of if ,else, elif ,while for anything is started
 
-By default the syntax and format of string is single quote
+By default the syntax and format of string is single quote.
+
+WE cannot perform the concatination in the sets 
+
+we have the continous memory allocation so we can use the loop on the sequential things which is either 
+
+    we can read it using the index and elements directly 
+
+    why we use the commas in range because range() is a function.
+
+    """s_str = "Hello"
+
+    ans = "r"
+    var = ans + s_str[1:] Deep Copy
+    print(ans + s_str[1:])""" Shallow Copy
+
+    difference btw the Shallow Copy and deep copy like  in the shallow copy the variable is terminated after the complete execution of the program but the in the deep copy the new values will be stored in the program after the program ends
+
+
+    Range used as generator and iterators.
+
+
+
