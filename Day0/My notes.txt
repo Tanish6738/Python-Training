@@ -29,9 +29,11 @@ DATA TYPE - list , tuple , string , (Range - generator and iterators of list) .
 
 colon significe the scope of if ,else, elif ,while for anything is started
 
-By default the syntax and format of string is single quote.
+String :
 
-WE cannot perform the concatination in the sets 
+    By default the syntax and format of string is single quote.
+
+WE cannot perform the concatination in the sets because of undefined memory allocations
 
 we have the continous memory allocation so we can use the loop on the sequential things which is either 
 
@@ -53,15 +55,17 @@ we have the continous memory allocation so we can use the loop on the sequential
 
 JO bhi class ke ander honge wo methods
 
+Functions : 
+
 Types : built in , User Defined , anynomus / Lamda , Higer Order
 
     built in function are the functions which are defined inside the default module of the python itself and they are the native to the python and present inside in the 
 
     https://docs.python.org/3/library/functions.html
 
-    import builtins
+    """import builtins
 
-    print(dir(builtins))
+    print(dir(builtins))"""
 
 
     User Defined : Are the functions which are the defined by the users for their easy of work
@@ -93,7 +97,8 @@ OOPS
     - PolyMorphism
     - Inheritence
     
-thier is not logic of Constructor
+their is not logic of Constructor
+
 Magic and  Dunder Methods in the Python
 
 here the in __init__(self) self reperesent the current instance of the Object
@@ -102,3 +107,83 @@ obj = class1() here the obj is referenced as self
 
 
 Because of NameSpace We Cannot use the Method Overloading . Because the Same function is not assign in the same dictionary of NameSpace
+
+
+Key insights
+
+We use the Lambda function to optimize the code 
+
+Generator : A function which use yield to provide one output at a time and then when requested
+
+
+
+yeild : 
+def func(a):
+    i = 0
+    while i <=a:
+        yield i
+        i += 1
+    
+for i in func(5):
+    print(i)
+
+    Yield Ek list ki thraah work karta hai to jo ki values to store karta hai jo baad me use ho sakti hai
+
+
+DEcorators in python :
+def Dec (func):
+    def wrapper(*args,**Kwargs):
+        print("something")
+        var = func(*args,**Kwargs)
+        return var 
+    return func
+
+@Dec
+def funtoins():
+    return 5 + 6 
+
+
+
+
+File handling 
+
+Access Modifiers :
+    r , w , a , r+ , w+ , a+
+    rb , wb , ab , rb+ , wb+ , ab+, x 
+
+
+    WE use the function instead of class because we have to extend the functionality of the existing file to the new file
+
+    var = open("<File Path>", "Access Modifier")
+    var.close()
+
+    with open("<File Path>", "Access Modifier") as var:
+        # do something with var
+        pass
+
+
+Execption handling
+
+try:
+    # code that may raise an exception
+
+    try has a fallback mechanism to handle exceptions gracefully
+
+    pass
+except ExceptionType as e:
+    # handle the exception
+    print(f"An error occurred: {e}")
+finally:
+    # code that runs no matter what
+    pass
+raise ExceptionType("Error message")
+
+
+Assert <condition> not in python .
+
+Package managers in Python 
+    - pip
+    - UV
+
+
+gitignore is a special file that tells Git which files or directories to ignore in a project. It helps keep the repository clean by excluding files that are not necessary for version control, such as temporary files, logs, or environment-specific configurations.
