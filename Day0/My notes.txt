@@ -187,3 +187,17 @@ Package managers in Python
 
 
 gitignore is a special file that tells Git which files or directories to ignore in a project. It helps keep the repository clean by excluding files that are not necessary for version control, such as temporary files, logs, or environment-specific configurations.
+
+
+Automatic conversion of code to database code is migration so web don't have to write the code again and again for the database.
+
+
+Loop back Address is the address that is used to test the network interface of a computer. It is typically represented by the IP address 127.0.0.1, which is also known as the "localhost" address. When you send data to this address, it is looped back to the same machine, allowing you to test network applications without needing an external network connection.
+
+local 
+global
+loop back
+
+
+applications are basic functional components of a website or web application that are designed to perform specific tasks or functions. They can include features like user authentication, data processing, and content management. Applications are often built using programming languages and frameworks that allow developers to create dynamic and interactive web experiences.
+
