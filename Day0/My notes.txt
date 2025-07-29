@@ -201,3 +201,37 @@ loop back
 
 applications are basic functional components of a website or web application that are designed to perform specific tasks or functions. They can include features like user authentication, data processing, and content management. Applications are often built using programming languages and frameworks that allow developers to create dynamic and interactive web experiences.
 
+Every schema will provide a state of a project. 
+
+a change in the schema will not affect the whole database until their is a relation btw the schema and the database.
+
+areas verbosname 
+
+httpresponse is request dependent and it doesn't have the datatype so we can use any type of data to respond..
+
+
+
+steps to create a Django project with commands:
+1. Virtual Environment : - 
+python -m venv myenv
+source myenv/bin/activate  # On Windows use: myenv\Scripts\activate
+2. Install Django:
+pip install django
+3. Create a Django project:
+django-admin startproject myproject
+4. Navigate to the project directory:
+cd myproject
+Note : Now we have the access to the Manage.py and it's the main file to run the Django project
+5. Create a Django app:
+python manage.py startapp myapp
+6. we create a urls.py file in the app directory to define the URL patterns for the app.
+7. we configure the urls.py 
+8. we will move to our request handleer file (views.py) and define the views that will handle the requests.
+9. By default , we have the render function to render the HTML templates.but we use the HttpResponse to return the response.
+10. At level zero we have to create a request handler for every url. 
+
+
+
+
+
+the url will tell 
