@@ -2,6 +2,9 @@ from django.shortcuts import render,HttpResponse , get_object_or_404 ,redirect
 from customerapp.models import Customer
 # Create your views here.
 
+def home(request):
+    return render(request, 'home.html')
+
 def create_customer(request):
     if request.method == 'POST':
         name = request.POST.get('name')
