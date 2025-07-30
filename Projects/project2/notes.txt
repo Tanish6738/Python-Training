@@ -1,0 +1,53 @@
+requirements.txt
+
+
+product table 
+product_name , price , quantity ,discount
+
+customer table
+customer_name, customer_email ,customer_phone
+
+order table
+customer_name , product and its details
+
+product table - > order table < - > customer table
+
+why i have to create these tables?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+form , modal form ,  order form .  

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billing Record Details</title>
+</head>
+<body>
+    <h1>Billing Record Details</h1>
+    
+    <div>
+        <h2>Record ID: {{ record.id }}</h2>
+        
+        <p><strong>Customer Name:</strong> {{ record.customer_name }}</p>
+        <p><strong>Total Amount:</strong> {{ record.total_amount }}</p>
+        <p><strong>Billing Date:</strong> {{ record.billing_date|date:"F d, Y H:i" }}</p>
+        
+        <h3>Product List:</h3>
+        <div>
+            {% if record.product_list %}
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in record.product_list %}
+                            <tr>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.price }}</td>
+                                <td>{{ product.quantity }}</td>
+                                <td>{{ product.price|floatformat:2 }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No products listed</p>
+            {% endif %}
+        </div>
+    </div>
+    
+    <br>
+    <a href="/billing/create/">Create New Billing Record</a>
+    <a href="/customer/create/">Create New Customer</a>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .customer-info {
+            margin-bottom: 20px;
+        }
+        .info-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            border-radius: 5px;
+        }
+        .info-item strong {
+            color: #333;
+            display: inline-block;
+            min-width: 80px;
+        }
+        .actions {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #28a745;
+        }
+        .btn-secondary:hover {
+            background-color: #1e7e34;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Details</h1>
+        
+        <div class="customer-info">
+            <div class="info-item">
+                <strong>ID:</strong> {{ customer.id }}
+            </div>
+            
+            <div class="info-item">
+                <strong>Name:</strong> {{ customer.name }}
+            </div>
+            
+            <div class="info-item">
+                <strong>Email:</strong> {{ customer.email }}
+            </div>
+            
+            <div class="info-item">
+                <strong>Phone:</strong> {{ customer.phone }}
+            </div>
+            
+            <div class="info-item">
+                <strong>Address:</strong> {{ customer.address }}
+            </div>
+        </div>
+        
+        <div class="actions">
+            <a href="{% url 'create_record' customer.id %}" class="btn btn-secondary">Create Billing Record</a>
+            <a href="{% url 'create_customer' %}" class="btn">Back to Create Customer</a>
+        </div>
+    </div>
+</body>
+</html>

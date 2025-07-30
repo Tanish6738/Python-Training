@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Billing Record</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .products-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .product-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: end;
+        }
+        .product-row > div {
+            flex: 1;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .add-product {
+            background-color: #28a745;
+            margin-bottom: 20px;
+        }
+        .add-product:hover {
+            background-color: #1e7e34;
+        }
+        .remove-product {
+            background-color: #dc3545;
+            padding: 10px;
+        }
+        .remove-product:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create Billing Record</h2>
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="customer_name">Customer Name:</label>
+                {% if customer %}
+                    <input type="text" id="customer_name" name="customer_name" value="{{ customer.name }}" readonly>
+                    <small>Customer selected from previous step</small>
+                {% else %}
+                    <input type="text" id="customer_name" name="customer_name" required>
+                {% endif %}
+            </div>
+            
+            <div class="products-section">
+                <h3>Products</h3>
+                <button type="button" class="add-product" onclick="addProductRow()">Add Product</button>
+                
+                <div id="products-container">
+                    <div class="product-row">
+                        <div>
+                            <label>Product Name:</label>
+                            <input type="text" name="product_name" required>
+                        </div>
+                        <div>
+                            <label>Price:</label>
+                            <input type="number" name="product_price" step="0.01" required>
+                        </div>
+                        <div>
+                            <label>Quantity:</label>
+                            <input type="number" name="product_quantity" min="1" required>
+                        </div>
+                        <div>
+                            <button type="button" class="remove-product" onclick="removeProductRow(this)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit">Create Billing Record</button>
+        </form>
+    </div>
+
+    <script>
+        function addProductRow() {
+            const container = document.getElementById('products-container');
+            const newRow = document.createElement('div');
+            newRow.className = 'product-row';
+            newRow.innerHTML = `
+                <div>
+                    <label>Product Name:</label>
+                    <input type="text" name="product_name" required>
+                </div>
+                <div>
+                    <label>Price:</label>
+                    <input type="number" name="product_price" step="0.01" required>
+                </div>
+                <div>
+                    <label>Quantity:</label>
+                    <input type="number" name="product_quantity" min="1" required>
+                </div>
+                <div>
+                    <button type="button" class="remove-product" onclick="removeProductRow(this)">Remove</button>
+                </div>
+            `;
+            container.appendChild(newRow);
+        }
+
+        function removeProductRow(button) {
+            const container = document.getElementById('products-container');
+            if (container.children.length > 1) {
+                button.closest('.product-row').remove();
+            } else {
+                alert('At least one product is required');
+            }
+        }
+    </script>
+</body>
+</html>
