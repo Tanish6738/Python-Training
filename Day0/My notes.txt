@@ -235,3 +235,14 @@ python manage.py startapp myapp
 
 
 the url will tell 
+
+
+
+database migrations queries 
+
+
+python manage.py makemigrations
+python manage.py migrate
+
+
+csrf = cross site request forgery is a type of attack that tricks the user into executing unwanted actions on a different website where they are authenticated. Django provides built-in protection against CSRF attacks by requiring a CSRF token in forms and AJAX requests.

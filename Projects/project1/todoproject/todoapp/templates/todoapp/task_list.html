@@ -1,0 +1,227 @@
+{% extends 'todoapp/base.html' %}
+
+{% block content %}
+<style>
+    .tasks-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .tasks-header h2 {
+        color: #2d3748;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .tasks-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .tasks-table thead {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+
+    .tasks-table th {
+        padding: 15px 20px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+
+    .tasks-table td {
+        padding: 15px 20px;
+        border-bottom: 1px solid #f7fafc;
+        vertical-align: middle;
+    }
+
+    .tasks-table tbody tr {
+        transition: all 0.3s ease;
+    }
+
+    .tasks-table tbody tr:hover {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+        transform: scale(1.01);
+    }
+
+    .task-title {
+        font-weight: 600;
+        color: #2d3748;
+        font-size: 1.1rem;
+    }
+
+    .task-title.completed {
+        text-decoration: line-through;
+        color: #a0aec0;
+    }
+
+    .task-description {
+        color: #4a5568;
+        line-height: 1.5;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .status-completed {
+        background: linear-gradient(135deg, #48bb78, #38a169);
+        color: white;
+    }
+
+    .status-pending {
+        background: linear-gradient(135deg, #ed8936, #dd6b20);
+        color: white;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .action-btn {
+        padding: 6px 12px;
+        border-radius: 15px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-edit {
+        background: linear-gradient(135deg, #4299e1, #3182ce);
+        color: white;
+    }
+
+    .btn-edit:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn-delete {
+        background: linear-gradient(135deg, #f56565, #e53e3e);
+        color: white;
+    }
+
+    .btn-delete:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3);
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn-toggle {
+        background: linear-gradient(135deg, #805ad5, #6b46c1);
+        color: white;
+    }
+
+    .btn-toggle:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(128, 90, 213, 0.3);
+        color: white;
+        text-decoration: none;
+    }
+
+    .no-tasks {
+        text-align: center;
+        padding: 60px 20px;
+        color: #a0aec0;
+        font-size: 1.2rem;
+    }
+
+    .no-tasks-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        opacity: 0.5;
+    }
+
+    @media (max-width: 768px) {
+        .tasks-table {
+            font-size: 0.9rem;
+        }
+        
+        .tasks-table th,
+        .tasks-table td {
+            padding: 10px 15px;
+        }
+        
+        .action-buttons {
+            flex-direction: column;
+        }
+        
+        .action-btn {
+            text-align: center;
+        }
+    }
+</style>
+
+<div class="tasks-header">
+    <h2>📋 Your Tasks</h2>
+</div>
+
+<table class="tasks-table">
+    <thead>
+        <tr>
+            <th>📝 Task</th>
+            <th>📄 Description</th>
+            <th>✅ Status</th>
+            <th>⚡ Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for task in tasks %}
+        <tr>
+            <td>
+                <div class="task-title {% if task.completed %}completed{% endif %}">
+                    {{ task.title }}
+                </div>
+            </td>
+            <td>
+                <div class="task-description">
+                    {{ task.description|default:"No description provided" }}
+                </div>
+            </td>
+            <td>
+                <span class="status-badge {% if task.completed %}status-completed{% else %}status-pending{% endif %}">
+                    {{ task.completed|yesno:"Completed,Pending" }}
+                </span>
+            </td>
+            <td>
+                <div class="action-buttons">
+                    <a href="task_update/{{ task.id }}" class="action-btn btn-edit">✏️ Edit</a>
+                    <a href="task_delete/{{ task.id }}" class="action-btn btn-delete">🗑️ Delete</a>
+                    <a href="task_toggle/{{ task.id }}" class="action-btn btn-toggle">
+                        {% if task.completed %}↩️ Undo{% else %}✅ Complete{% endif %}
+                    </a>
+                </div>
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="4" class="no-tasks">
+                <div class="no-tasks-icon">📝</div>
+                <div>No tasks yet. Start by creating your first task!</div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
